@@ -10,14 +10,19 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
 
+const {mongoDbUrl} = require('../config/database');
 
 mongoose.Promise = global.Promise;
 
 //dB connect
-mongoose.connect('mongodb+srv://cms:123@cluster0-e5mut.mongodb.net/test?retryWrites=true&w=majority',{ useUnifiedTopology: true }).then(db=>{
+// mongoose.connect('mongodb+srv://cms:123@cluster0-e5mut.mongodb.net/test?retryWrites=true&w=majority',{ useUnifiedTopology: true }).then(db=>{
+// 
+// console.log('DB connected');
+// }).catch(err => console.log('Error occur while connecting DB'));
 
-console.log('DB connected');
-}).catch(err => console.log('Error occur while connecting DB'));
+mongoose.connect(mongoDbUrl).then(db=>{
+    console.log('Mongo DB connected');
+}).catch(error=>console.log(error));
 
 //static for css,js
 app.use(express.static(path.join(__dirname, 'public')));
