@@ -14,7 +14,7 @@ const passport = require('passport');
 mongoose.Promise = global.Promise;
 
 //dB connect
-mongoose.connect('mongodb://localhost:27017/cms',{ useUnifiedTopology: true }).then(db=>{
+mongoose.connect('mongodb+srv://cms:123@cluster0-e5mut.mongodb.net/test?retryWrites=true&w=majority',{ useUnifiedTopology: true }).then(db=>{
 
 console.log('DB connected');
 }).catch(err => console.log('Error occur while connecting DB'));
