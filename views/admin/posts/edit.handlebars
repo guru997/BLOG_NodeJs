@@ -1,0 +1,49 @@
+<h2>Edit Posts</h2>
+<br>
+<form action = "/admin/posts/edit/{{post.id}}?_method=PUT" method = "post" enctype="multipart/form-data">
+    <div class = "form-group">
+        <label>Title</label>
+        <input type= "text" name= "title" class = "form-control" value = "{{ post.title }}">
+    </div>
+
+     <div class = "form-group">   
+         <label>Category</label>     
+        <select name ="category" class="form-control"> 
+        {{#select post.category}}  
+            {{#each categories}}
+            <option value="{{id}}">{{name}}</option>       
+            {{/each}}
+        {{/select}}
+        </select>   
+    </div> 
+
+    <div class = "form-group">   
+         <label>Status</label>     
+        <select name ="status" class="form-control">
+        {{#select post.status}}
+            <option value="Public">Public</option>
+            <option value="Private">Private</option>
+            <option value="Draft">Draft</option>
+        {{/select}}
+        </select>
+    </div>    
+
+   
+
+    <div class = "form-group">         
+        <label class="form-check-label">
+        <input type = "checkbox" {{#if post.allowcomments }} checked = "checked" {{/if}} name ="allowcomments" class="form-check-input">
+        Allow Comments</label>
+    </div>  
+    <div class="form-group">
+        <label>Body</label>
+        <textarea type= "text" rows="6" cols = "20" name= "body" class = "form-control">{{ post.body }}</textarea>
+    </div>
+    <div class = "form-group">
+        <label>Image</label>
+        <input type= "file" name= "file" class = "form-control" >
+    </div>
+    <div class = "form-group">
+        <button class = "btn btn-primary" type="submit">Update Post</button>
+    </div>
+</form>

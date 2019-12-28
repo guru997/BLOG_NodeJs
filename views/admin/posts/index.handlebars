@@ -1,0 +1,40 @@
+<h2>All Posts</h2>
+
+<br>
+<div style="overflow-x:auto;">
+<table class="table table-bordered" >
+    <thead>
+        <tr>            
+            <th>ID</th>
+             <th>Date</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>AllowComments</th>  
+            <th>Image</th>   
+            <th>Update</th>  
+            <th>Delete</th>         
+        </tr>
+    </thead>
+    <tbody>
+        {{#each posts}}
+        <tr>            
+            <td>{{ id }}</td>
+            <td>{{GenerateTime date 'MMMM Do YYYY'}}</td>
+            <td>{{ title }}</td>  
+            <td>{{ category.name }}</td>            
+            <td>{{ status }}</td>
+            <td>{{ allowcomments }}</td>
+            <td><img height="50" class="img-responsive" src="/uploads/{{ file }}" alt=""</td>
+            <td><a href="/admin/posts/edit/{{id}}" class="btn btn-info">Update</a></td>
+            <td>
+                <form action = "/admin/posts/{{id}}?_method=DELETE" method = "post">
+                <button class = "btn btn-danger" type ="submit">DELETE</button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+
+</table>
+</div>
