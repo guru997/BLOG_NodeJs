@@ -10,7 +10,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
 
-const {mongoDbUrl} = require('../config/database');
+const {mongoDbUrl} = require('./config/database');
 
 mongoose.Promise = global.Promise;
 
